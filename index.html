@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nezora — Scientific Discovery &amp; Innovation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+
+/* ─── RESET & ROOT ─── */
+* { margin:0; padding:0; box-sizing:border-box }
+
+:root {
+  --beige:       #F6F1E7;
+  --beige-dark:  #EDE6D2;
+  --beige-deep:  #E0D5C0;
+  --white:       #FFFFFF;
+  --tan:         #C8BEA5;
+  --tan-light:   #DDD6C5;
+
+  --blue:        #3B5E8C;
+  --blue-dark:   #2A4466;
+  --blue-mid:    #5578A2;
+  --blue-light:  #8DAEC8;
+  --blue-pale:   #D6E3EF;
+
+  --text:        #1A2533;
+  --text2:       #4A5F78;
+  --text3:       #8A9BAD;
+  --border:      #C8BEA5;
+
+  --display: 'Playfair Display', Georgia, serif;
+  --body:    'Lato', 'Helvetica Neue', sans-serif;
+  --serif:   'EB Garamond', Georgia, serif;
+}
+
+html { scroll-behavior: smooth }
+
+body {
+  font-family: var(--body);
+  background: var(--beige);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ─── NAVIGATION ─── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: 68px; display: flex; align-items: center;
+  background: var(--beige);
+  border-bottom: 2px solid var(--blue);
+}
+.nav-inner {
+  max-width: 1180px; margin: 0 auto; padding: 0 28px; width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo {
+  display: flex; align-items: center; gap: 10px; cursor: pointer;
+  font-family: var(--display); font-size: 20px; font-weight: 700;
+  color: var(--blue-dark); letter-spacing: .04em; text-decoration: none;
+}
+.logo img { width: 42px; height: 42px; object-fit: contain; border-radius: 50% }
+.nav-links { display: flex; align-items: center; gap: 2px; list-style: none }
+.nav-links a {
+  color: var(--text2); text-decoration: none; font-size: 14px; font-weight: 400;
+  padding: 7px 14px; border-radius: 2px; transition: color .15s, background .15s;
+  cursor: pointer; display: block; letter-spacing: .02em;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--blue-dark); background: var(--blue-pale) }
+.nav-cta { background: var(--blue) !important; color: #fff !important; font-weight: 700 !important }
+.nav-cta:hover { background: var(--blue-dark) !important }
+
+/* ─── PAGES ─── */
+.pg { display: none; padding-top: 68px; min-height: 100vh }
+.pg.active { display: block }
+
+/* ─── HERO ─── */
+.hero-section {
+  background: var(--beige);
+  border-bottom: 1px solid var(--tan);
+}
+.hero-inner {
+  max-width: 1180px; margin: 0 auto; padding: 72px 28px 80px;
+  display: grid; grid-template-columns: 1fr auto; gap: 64px; align-items: center;
+}
+.hero-eyebrow {
+  font-family: var(--body); font-size: 12px; font-weight: 700;
+  color: var(--blue-mid); text-transform: uppercase; letter-spacing: .12em;
+  margin-bottom: 20px; display: block;
+}
+h1.hero-title {
+  font-family: var(--display); font-size: clamp(32px, 4.5vw, 58px);
+  font-weight: 700; line-height: 1.13; color: var(--blue-dark);
+  margin-bottom: 18px; max-width: 560px;
+}
+h1.hero-title em {
+  font-style: italic; color: var(--blue);
+}
+.hero-sub {
+  font-size: 16px; color: var(--text2); max-width: 480px;
+  margin-bottom: 32px; line-height: 1.8; font-weight: 300;
+}
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap }
+
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 11px 22px; border-radius: 2px; font-weight: 700; font-size: 13px;
+  cursor: pointer; border: none; transition: all .15s;
+  font-family: var(--body); text-decoration: none;
+  letter-spacing: .04em; text-transform: uppercase;
+}
+.btn-p { background: var(--blue); color: #fff }
+.btn-p:hover { background: var(--blue-dark) }
+.btn-s { background: transparent; color: var(--blue-dark); border: 1px solid var(--blue) }
+.btn-s:hover { background: var(--blue-pale) }
+
+.hero-visual { display: flex; align-items: center; justify-content: center; padding: 12px }
+.hero-logo-ring {
+  width: 260px; height: 260px; border-radius: 50%;
+  background: var(--white); border: 1px solid var(--tan);
+  display: flex; align-items: center; justify-content: center;
+}
+.hero-logo-ring img { width: 210px; height: 210px; object-fit: contain; border-radius: 50% }
+
+/* ─── STATS BAR ─── */
+.stats-bar { background: var(--blue-dark); border-top: 0; border-bottom: 0 }
+.stats-inner {
+  max-width: 1180px; margin: 0 auto; padding: 0 28px;
+  display: grid; grid-template-columns: repeat(4,1fr);
+}
+.stat-item {
+  padding: 26px 20px; text-align: center;
+  border-right: 1px solid rgba(255,255,255,.15);
+}
+.stat-item:last-child { border-right: none }
+.stat-num {
+  font-family: var(--display); font-size: 34px; font-weight: 700;
+  color: #fff; line-height: 1; margin-bottom: 5px;
+}
+.stat-num em { font-style: normal; color: var(--blue-light) }
+.stat-lbl { font-size: 11px; color: rgba(255,255,255,.65); text-transform: uppercase; letter-spacing: .1em; font-weight: 700 }
+
+/* ─── SECTION LAYOUT ─── */
+.section { padding: 80px 28px; max-width: 1180px; margin: 0 auto }
+.section-alt { background: var(--beige-dark) }
+.section-alt-wrap { background: var(--beige-dark); border-top: 1px solid var(--tan); border-bottom: 1px solid var(--tan) }
+.section-0 { padding-top: 0 }
+
+.sec-rule {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 12px;
+}
+.sec-rule::before {
+  content: ''; display: block; width: 32px; height: 2px; background: var(--blue);
+}
+.sec-label {
+  font-family: var(--body); font-size: 11px; font-weight: 700;
+  color: var(--blue); text-transform: uppercase; letter-spacing: .12em;
+}
+.sec-title {
+  font-family: var(--display); font-size: clamp(24px,3vw,38px);
+  font-weight: 700; line-height: 1.2; margin-bottom: 10px; color: var(--blue-dark);
+}
+.sec-title em { font-style: italic; color: var(--blue) }
+.sec-sub { font-size: 15px; color: var(--text2); max-width: 520px; line-height: 1.8; margin-bottom: 44px; font-weight: 300 }
+
+/* ─── ARTICLE CARDS ─── */
+.grid2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px }
+.card {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 3px; cursor: pointer; transition: border-color .18s, box-shadow .18s;
+  overflow: hidden; display: flex; flex-direction: column;
+}
+.card:hover {
+  border-color: var(--blue); box-shadow: 0 4px 18px rgba(42,68,102,.10);
+}
+.card-img {
+  width: 100%;
+  background: var(--beige-dark);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px; border-bottom: 1px solid var(--tan-light);
+}
+.card-img img {
+  width: 100%; max-width: 240px; height: auto; display: block;
+}
+.card-body { padding: 22px 24px 26px; display: flex; flex-direction: column; flex: 1 }
+.cat-badge {
+  display: inline-block; background: var(--blue-pale); color: var(--blue-dark);
+  font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 2px;
+  text-transform: uppercase; letter-spacing: .07em; margin-bottom: 11px; width: fit-content;
+  border: 1px solid var(--blue-light);
+}
+.card h3 {
+  font-family: var(--display); font-size: 17px; font-weight: 600;
+  color: var(--blue-dark); margin-bottom: 9px; line-height: 1.35;
+}
+.card p { color: var(--text2); font-size: 14px; line-height: 1.75; margin-bottom: 18px; flex: 1; font-weight: 300 }
+.card-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 14px; border-top: 1px solid var(--tan-light); margin-top: auto;
+}
+.card-author { font-size: 12px; color: var(--text3) }
+.card-author strong { color: var(--text2); font-weight: 700 }
+.read-link { font-size: 12px; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: .06em }
+
+/* ─── MISSION CARDS ─── */
+.grid2m { display: grid; grid-template-columns: repeat(2,1fr); gap: 18px }
+.mc {
+  background: var(--white); border: 1px solid var(--border);
+  border-radius: 3px; padding: 28px; transition: border-color .18s;
+}
+.mc:hover { border-color: var(--blue) }
+.mc-num {
+  font-family: var(--display); font-size: 26px; font-style: italic;
+  color: var(--blue); margin-bottom: 14px; line-height: 1;
+}
+.mc h3 { font-family: var(--display); font-size: 16px; font-weight: 600; color: var(--blue-dark); margin-bottom: 8px }
+.mc p { color: var(--text2); font-size: 14px; line-height: 1.75; font-weight: 300 }
+
+/* ─── CONTRIBUTE ─── */
+.contrib-wrap {
+  background: var(--white); border: 1px solid var(--border); border-radius: 3px;
+  padding: 52px; display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: start;
+}
+.steps { display: flex; flex-direction: column; gap: 20px }
+.step { display: flex; gap: 18px; align-items: flex-start }
+.step-n {
+  min-width: 34px; height: 34px;
+  background: var(--blue); color: #fff;
+  border-radius: 2px; display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-size: 14px; font-style: italic; font-weight: 600;
+  flex-shrink: 0;
+}
+.step-t h4 { font-weight: 700; color: var(--blue-dark); margin-bottom: 3px; font-size: 14px }
+.step-t p { font-size: 13px; color: var(--text2); line-height: 1.7; font-weight: 300 }
+
+.vol-badge {
+  background: var(--blue-dark); border-radius: 3px; padding: 36px;
+  text-align: center; color: #fff;
+}
+.vol-num {
+  font-family: var(--display); font-size: 64px; font-weight: 700;
+  font-style: italic; color: var(--blue-light); line-height: 1; margin-bottom: 6px;
+}
+.vol-lbl { font-size: 13px; color: rgba(255,255,255,.7); margin-bottom: 18px; line-height: 1.6 }
+
+/* ─── PROCESS STEPS ─── */
+.proc-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 12px }
+.proc-step {
+  background: var(--white); border: 1px solid var(--border);
+  border-left: 3px solid var(--blue); border-radius: 2px;
+  padding: 16px 14px; transition: border-color .18s;
+}
+.proc-step:hover { border-color: var(--blue); border-left-color: var(--blue-dark) }
+.proc-num {
+  font-family: var(--display); font-size: 20px; font-style: italic;
+  color: var(--blue); font-weight: 600; margin-bottom: 7px; line-height: 1;
+}
+.proc-step h4 { font-size: 12px; font-weight: 700; color: var(--blue-dark); line-height: 1.4 }
+
+/* ─── NEWSLETTER ─── */
+.nl-wrap {
+  background: var(--blue-dark); border-radius: 3px; padding: 64px;
+  text-align: center; max-width: 1180px; margin: 0 auto 72px; color: #fff;
+}
+.nl-wrap .sec-title { color: #fff }
+.nl-wrap .sec-title em { color: var(--blue-light) }
+.nl-wrap p { color: rgba(255,255,255,.75); font-size: 15px; max-width: 420px; margin: 0 auto 28px; line-height: 1.8; font-weight: 300 }
+.email-form { display: flex; gap: 8px; max-width: 420px; margin: 0 auto }
+.email-input {
+  flex: 1; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 2px; padding: 11px 15px; color: #fff; font-size: 14px;
+  outline: none; transition: border-color .15s; font-family: var(--body);
+}
+.email-input::placeholder { color: rgba(255,255,255,.45) }
+.email-input:focus { border-color: var(--blue-light) }
+
+/* ─── ARTICLE PAGE ─── */
+.art-page { max-width: 700px; margin: 0 auto; padding: 60px 24px 80px }
+.art-back {
+  display: inline-flex; align-items: center; gap: 5px; color: var(--blue);
+  font-size: 13px; font-weight: 700; cursor: pointer; margin-bottom: 28px;
+  text-transform: uppercase; letter-spacing: .06em;
+}
+.art-back:hover { color: var(--blue-dark) }
+.art-cover {
+  display: flex; justify-content: center;
+  margin-bottom: 32px; border-bottom: 1px solid var(--tan); padding-bottom: 28px;
+}
+.art-cover img {
+  max-width: 280px; width: 100%; height: auto; display: block;
+  border: 1px solid var(--tan);
+}
+.art-page h1 {
+  font-family: var(--display); font-size: clamp(24px,3vw,34px); font-weight: 700;
+  color: var(--blue-dark); line-height: 1.25; margin-bottom: 14px;
+}
+.art-meta { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 22px }
+.author-chip {
+  display: flex; align-items: center; gap: 7px; background: var(--blue-pale);
+  border: 1px solid var(--blue-light); padding: 5px 12px; border-radius: 2px;
+  font-size: 13px; font-weight: 400; color: var(--blue-dark);
+}
+.av {
+  width: 20px; height: 20px; background: var(--blue-dark); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 700; color: #fff;
+}
+.divider { height: 1px; background: var(--tan); margin: 22px 0 }
+
+/* Article body — academic serif */
+.art-body {
+  font-family: var(--serif); font-size: 17px; line-height: 1.95; color: var(--text);
+}
+.art-body h2 {
+  font-family: var(--display); font-size: 21px; font-weight: 700;
+  color: var(--blue-dark); margin: 40px 0 12px;
+  padding-bottom: 8px; border-bottom: 1px solid var(--tan);
+}
+.art-body h3 {
+  font-family: var(--display); font-size: 17px; font-weight: 600;
+  color: var(--blue-dark); margin: 28px 0 8px; font-style: italic;
+}
+.art-body p { margin-bottom: 16px }
+.art-body ul, .art-body ol { padding-left: 24px; margin-bottom: 16px }
+.art-body li { margin-bottom: 7px }
+.art-body blockquote {
+  border-left: 3px solid var(--blue); padding: 12px 20px; margin: 22px 0;
+  background: var(--blue-pale); font-style: italic; color: var(--blue-dark);
+  font-family: var(--serif);
+}
+.art-body strong { color: var(--text); font-weight: 700 }
+.art-body a { color: var(--blue) }
+.hl {
+  background: var(--beige-dark); border: 1px solid var(--tan); border-left: 3px solid var(--blue);
+  border-radius: 2px; padding: 18px 20px; margin: 20px 0;
+}
+.hl h4 {
+  font-family: var(--body); font-size: 10px; font-weight: 700; color: var(--blue);
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: 9px;
+}
+.hl p { font-family: var(--body); font-size: 13.5px; color: var(--text2); line-height: 1.75; margin: 0 }
+
+/* Works Cited */
+.works-cited { margin-top: 48px; padding-top: 24px; border-top: 2px solid var(--blue) }
+.works-cited h2 {
+  font-family: var(--display); font-size: 18px; font-weight: 700;
+  color: var(--blue-dark); margin-bottom: 16px;
+}
+.cite-list { list-style: none; padding: 0 }
+.cite-list li {
+  font-family: var(--body); font-size: 13px; color: var(--text2); line-height: 1.7;
+  margin-bottom: 10px; padding-left: 20px; text-indent: -20px;
+}
+.cite-list li a { color: var(--blue); word-break: break-all }
+
+/* ─── EVENTS PAGE ─── */
+.events-gallery { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin-top: 8px }
+.event-card {
+  background: var(--white); border: 1px solid var(--border); border-radius: 3px; overflow: hidden;
+}
+.event-card-img {
+  width: 100%; overflow: hidden; background: var(--beige-dark);
+  border-bottom: 1px solid var(--tan);
+}
+.event-card-img img { width: 100%; height: auto; display: block }
+.event-card-body { padding: 22px }
+.event-tag {
+  display: inline-block; font-size: 10px; font-weight: 700;
+  background: var(--blue-pale); border: 1px solid var(--blue-light);
+  color: var(--blue-dark); padding: 3px 8px; border-radius: 2px;
+  text-transform: uppercase; letter-spacing: .07em; margin-bottom: 10px;
+}
+.event-card-body h3 {
+  font-family: var(--display); font-size: 17px; font-weight: 600;
+  color: var(--blue-dark); margin-bottom: 10px;
+}
+.event-card-body p { font-size: 14px; color: var(--text2); line-height: 1.75; font-weight: 300 }
+
+/* ─── PANELS / INFO BOXES ─── */
+.info-panel {
+  background: var(--white); border: 1px solid var(--border); border-radius: 3px; padding: 32px;
+}
+.info-panel h2, .info-panel h3 {
+  font-family: var(--display); color: var(--blue-dark); margin-bottom: 12px;
+}
+.info-row { display: flex; gap: 12px; margin-bottom: 14px; align-items: flex-start }
+.info-icon {
+  width: 28px; height: 28px; min-width: 28px;
+  background: var(--blue-pale); border: 1px solid var(--blue-light);
+  border-radius: 2px; display: flex; align-items: center; justify-content: center;
+  font-family: var(--display); font-size: 12px; font-style: italic; color: var(--blue-dark); font-weight: 600;
+}
+
+/* ─── CONTACT ─── */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px }
+.fg { margin-bottom: 16px }
+.fg label {
+  display: block; font-size: 11px; font-weight: 700; color: var(--text2);
+  margin-bottom: 6px; text-transform: uppercase; letter-spacing: .07em;
+}
+.fc {
+  width: 100%; background: var(--white); border: 1px solid var(--border);
+  border-radius: 2px; padding: 11px 14px; color: var(--text); font-size: 14px;
+  outline: none; transition: border-color .15s; font-family: var(--body);
+}
+.fc:focus { border-color: var(--blue) }
+textarea.fc { resize: vertical; min-height: 120px }
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--blue-dark); border-top: 2px solid var(--blue);
+  padding: 52px 28px 32px;
+}
+.ft-inner { max-width: 1180px; margin: 0 auto }
+.ft-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px }
+.ft-brand p { color: rgba(255,255,255,.6); font-size: 13px; line-height: 1.75; margin-top: 12px; max-width: 240px; font-weight: 300 }
+.ft-col h4 { font-size: 11px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 14px }
+.ft-col ul { list-style: none }
+.ft-col ul li { margin-bottom: 9px }
+.ft-col ul li a { color: rgba(255,255,255,.6); text-decoration: none; font-size: 13px; cursor: pointer; transition: color .14s; font-weight: 300 }
+.ft-col ul li a:hover { color: #fff }
+.ft-bot { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.15) }
+.ft-bot p { font-size: 12px; color: rgba(255,255,255,.45) }
+
+/* ─── RESPONSIVE ─── */
+@media(max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 36px }
+  .hero-visual { display: none }
+  .ft-top { grid-template-columns: 1fr 1fr; gap: 28px }
+}
+@media(max-width: 700px) {
+  .grid2, .grid2m, .contrib-wrap, .contact-grid, .events-gallery { grid-template-columns: 1fr }
+  .contrib-wrap { padding: 28px }
+  .proc-grid { grid-template-columns: repeat(2,1fr) }
+  .stats-inner { grid-template-columns: repeat(2,1fr) }
+  .stat-item:nth-child(2) { border-right: none }
+  .nl-wrap { padding: 40px 22px }
+  .email-form { flex-direction: column }
+  .ft-top { grid-template-columns: 1fr }
+  .nav-links li:not(:last-child):not(:nth-last-child(2)) { display: none }
+}
+
+::-webkit-scrollbar { width: 5px }
+::-webkit-scrollbar-track { background: var(--beige) }
+::-webkit-scrollbar-thumb { background: var(--tan); border-radius: 2px }
+::-webkit-scrollbar-thumb:hover { background: var(--blue-mid) }
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav>
+  <div class="nav-inner">
+    <div class="logo" onclick="go('home')">
+      <img src="logo.png" alt="Nezora logo">
+      NEZORA
+    </div>
+    <ul class="nav-links">
+      <li><a data-pg="home" class="active" onclick="go('home')">Home</a></li>
+      <li><a data-pg="about" onclick="go('about')">About</a></li>
+      <li><a data-pg="articles" onclick="go('articles')">Articles</a></li>
+      <li><a data-pg="events" onclick="go('events')">Events</a></li>
+      <li><a data-pg="contact" onclick="go('contact')" class="nav-cta">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════════════ HOME ═══════════════ -->
+<div id="pg-home" class="pg active">
+
+  <!-- Hero -->
+  <div class="hero-section">
+    <div class="hero-inner">
+      <div class="hero-text">
+        <span class="hero-eyebrow">Student-Led Nonprofit &nbsp;&middot;&nbsp; STEM Education &amp; Research</span>
+        <h1 class="hero-title">Your Gateway to a World of <em>Scientific Discovery</em></h1>
+        <p class="hero-sub">Democratizing access to science resources and inspiring the next generation of STEM leaders — one publication at a time.</p>
+        <div class="hero-btns">
+          <button class="btn btn-p" onclick="go('articles')">Explore Research</button>
+          <button class="btn btn-s" onclick="go('about')">Our Mission</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-logo-ring">
+          <img src="logo.png" alt="Nezora">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item"><div class="stat-num"><em>4</em></div><div class="stat-lbl">Published Articles</div></div>
+      <div class="stat-item"><div class="stat-num"><em>100</em>+</div><div class="stat-lbl">Student Contributors</div></div>
+      <div class="stat-item"><div class="stat-num"><em>500</em>+</div><div class="stat-lbl">Volunteer Hours Earned</div></div>
+      <div class="stat-item"><div class="stat-num"><em>4</em></div><div class="stat-lbl">STEM Pillars</div></div>
+    </div>
+  </div>
+
+  <!-- Featured Articles -->
+  <div class="section">
+    <div class="sec-rule"><span class="sec-label">Latest Research</span></div>
+    <h2 class="sec-title">Featured <em>Publications</em></h2>
+    <p class="sec-sub">Explore our student-authored research spanning neuroscience, psychology, chemistry, and beyond.</p>
+    <div class="grid2">
+      <div class="card" onclick="art('jealousy')">
+        <div class="card-img"><img src="jealousy.png" alt="Nature's Effect on Jealousy"></div>
+        <div class="card-body">
+          <div class="cat-badge">Psychology</div>
+          <h3>Effect of Exposure to Nature on Feelings of Jealousy</h3>
+          <p>Discover how reconnecting with nature could be the key to unlocking a life free from envy and stress.</p>
+          <div class="card-foot"><div class="card-author">By <strong>Alexa N. Edwards</strong></div><div class="read-link">Read &rarr;</div></div>
+        </div>
+      </div>
+      <div class="card" onclick="art('sleep')">
+        <div class="card-img"><img src="sleep.png" alt="Why Should You Sleep?"></div>
+        <div class="card-body">
+          <div class="cat-badge">Neuroscience</div>
+          <h3>Why Should You Sleep?</h3>
+          <p>Learn about the essential role of sleep in brain health and function — from memory consolidation to glymphatic waste removal.</p>
+          <div class="card-foot"><div class="card-author">By <strong>Juliet Kozlov</strong></div><div class="read-link">Read &rarr;</div></div>
+        </div>
+      </div>
+      <div class="card" onclick="art('sigfigs')">
+        <div class="card-img"><img src="back_to_school.png" alt="Back to School Science Tips"></div>
+        <div class="card-body">
+          <div class="cat-badge">Chemistry</div>
+          <h3>Back to School Science Knick-Knacks</h3>
+          <p>Learn crucial information to prepare yourself for all of your science classes this year!</p>
+          <div class="card-foot"><div class="card-author">By <strong>Nezora Staff</strong></div><div class="read-link">Read &rarr;</div></div>
+        </div>
+      </div>
+      <div class="card" onclick="art('research')">
+        <div class="card-img"><img src="research_process.png" alt="The Research Process"></div>
+        <div class="card-body">
+          <div class="cat-badge">Research Methods</div>
+          <h3>The Research Process</h3>
+          <p>How do you start researching yourself? Learn the important steps to getting your paper published!</p>
+          <div class="card-foot"><div class="card-author">By <strong>Nezora Staff</strong></div><div class="read-link">Read &rarr;</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mission Pillars -->
+  <div class="section-alt-wrap">
+    <div class="section">
+      <div class="sec-rule"><span class="sec-label">Why Nezora</span></div>
+      <h2 class="sec-title">Addressing the <em>Gaps in STEM</em></h2>
+      <p class="sec-sub">Four critical challenges hold back the next generation of scientists. Nezora was built to solve them.</p>
+      <div class="grid2m">
+        <div class="mc"><div class="mc-num">I.</div><h3>Expanding the Curriculum</h3><p>Traditional school curricula fall short of the depth STEM demands. We bridge this gap with deeper resources, research guides, and advanced content that goes beyond the classroom.</p></div>
+        <div class="mc"><div class="mc-num">II.</div><h3>Closing the Representation Gap</h3><p>Women and minorities remain systemically underrepresented in STEM. We cultivate an inclusive environment through advocacy, outreach, and support initiatives that uplift diverse voices.</p></div>
+        <div class="mc"><div class="mc-num">III.</div><h3>Building Scientific Community</h3><p>Science thrives in community. We connect STEM enthusiasts across schools and disciplines, amplifying collective impact through collaboration and shared exploration.</p></div>
+        <div class="mc"><div class="mc-num">IV.</div><h3>Inspiring Future Generations</h3><p>The scientists of tomorrow need mentors today. Through mentorship, hands-on learning, and showcasing real student research, we plant the seeds that grow into STEM careers.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contribute / Volunteer Hours -->
+  <div class="section">
+    <div class="contrib-wrap">
+      <div>
+        <div class="sec-rule"><span class="sec-label">Get Involved</span></div>
+        <h2 class="sec-title" style="margin-bottom:12px">Contribute &amp; <em>Earn Volunteer Hours</em></h2>
+        <p style="color:var(--text2);margin-bottom:28px;font-size:15px;line-height:1.8;font-weight:300">Join our growing community of student researchers and writers. Every publication you contribute earns verified volunteer hours — recognized for NHS, college applications, and academic transcripts.</p>
+        <div class="steps">
+          <div class="step"><div class="step-n">1</div><div class="step-t"><h4>Submit Your Research or Article</h4><p>Fill out our submission form with your original research, literature review, or educational content.</p></div></div>
+          <div class="step"><div class="step-n">2</div><div class="step-t"><h4>Editorial Review</h4><p>Our editorial team reads your work and provides constructive feedback to strengthen it before publication.</p></div></div>
+          <div class="step"><div class="step-n">3</div><div class="step-t"><h4>Get Published</h4><p>Your article goes live on Nezora, accessible to students and educators across the community.</p></div></div>
+          <div class="step"><div class="step-n">4</div><div class="step-t"><h4>Receive Your Volunteer Certificate</h4><p>Each published article earns you documented volunteer hours for your transcript and applications.</p></div></div>
+        </div>
+        <div style="margin-top:28px;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-p" onclick="go('contact')">Submit Your Work</button>
+          <button class="btn btn-s" onclick="go('about')">Learn About Recruiting</button>
+        </div>
+      </div>
+      <div class="vol-badge">
+        <div class="vol-num">500+</div>
+        <div class="vol-lbl">Volunteer Hours Earned<br>by Our Contributors</div>
+        <div style="height:1px;background:rgba(255,255,255,.2);margin:18px 0"></div>
+        <p style="color:rgba(255,255,255,.65);font-size:13px;line-height:1.8;font-weight:300">Recognized for NHS, college applications, and academic portfolios. Each published article provides verifiable community service hours.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Research Pipeline -->
+  <div class="section-alt-wrap">
+    <div class="section">
+      <div class="sec-rule"><span class="sec-label">Educational Resources</span></div>
+      <h2 class="sec-title">The Scientific <em>Research Pipeline</em></h2>
+      <p class="sec-sub">Every great discovery starts with a question. Here are the ten steps from curiosity to published research.</p>
+      <div class="proc-grid">
+        <div class="proc-step"><div class="proc-num">1</div><h4>Identify Research Question</h4></div>
+        <div class="proc-step"><div class="proc-num">2</div><h4>Literature Review</h4></div>
+        <div class="proc-step"><div class="proc-num">3</div><h4>Formulate Hypothesis</h4></div>
+        <div class="proc-step"><div class="proc-num">4</div><h4>Design the Study</h4></div>
+        <div class="proc-step"><div class="proc-num">5</div><h4>Data Collection</h4></div>
+        <div class="proc-step"><div class="proc-num">6</div><h4>Data Analysis</h4></div>
+        <div class="proc-step"><div class="proc-num">7</div><h4>Interpret Results</h4></div>
+        <div class="proc-step"><div class="proc-num">8</div><h4>Report Findings</h4></div>
+        <div class="proc-step"><div class="proc-num">9</div><h4>Revise &amp; Refine</h4></div>
+        <div class="proc-step"><div class="proc-num">10</div><h4>Peer Review</h4></div>
+      </div>
+      <div style="text-align:center;margin-top:28px">
+        <button class="btn btn-s" onclick="art('research')">Read the Full Research Guide &rarr;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Newsletter -->
+  <div style="padding:0 28px 72px;max-width:1180px;margin:0 auto">
+    <div class="nl-wrap">
+      <div class="sec-rule" style="justify-content:center;margin-bottom:12px">
+        <span class="sec-label" style="color:rgba(255,255,255,.65)">Stay Connected</span>
+      </div>
+      <h2 class="sec-title" style="margin-bottom:12px">Join the Nezora <em>Community</em></h2>
+      <p>Get notified about new publications, STEM events, volunteer opportunities, and resources — delivered to your inbox.</p>
+      <form class="email-form" onsubmit="return false">
+        <input type="email" class="email-input" placeholder="your@email.com">
+        <button type="submit" class="btn btn-p">Subscribe</button>
+      </form>
+    </div>
+  </div>
+
+</div><!-- /home -->
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<div id="pg-about" class="pg">
+  <div style="padding:68px 28px 48px;max-width:1180px;margin:0 auto">
+    <div class="sec-rule"><span class="sec-label">About Nezora</span></div>
+    <h1 style="font-family:var(--display);font-size:clamp(28px,4vw,48px);font-weight:700;color:var(--blue-dark);line-height:1.18;margin-bottom:14px">Empowering the Next Generation of <em style="font-style:italic;color:var(--blue)">STEM Leaders</em></h1>
+    <p style="color:var(--text2);font-size:16px;max-width:560px;line-height:1.85;font-weight:300">A student-led nonprofit dedicated to democratizing access to science through publications, education, and community outreach.</p>
+  </div>
+  <div style="max-width:1180px;margin:0 auto;padding:0 28px 72px">
+    <div class="grid2" style="margin-bottom:44px">
+      <div class="info-panel">
+        <h2 style="font-size:20px;margin-bottom:12px">Our Mission</h2>
+        <p style="color:var(--text2);font-size:15px;line-height:1.85;font-weight:300">Nezora's mission is to inspire and empower individuals — especially minorities and women — to pursue STEM fields by providing comprehensive education, resources, and opportunities. We aim to close representation gaps by cultivating an inclusive environment where all participants can develop their full potential.</p>
+      </div>
+      <div style="background:var(--blue-pale);border:1px solid var(--blue-light);border-radius:3px;padding:32px">
+        <h2 style="font-family:var(--display);font-size:20px;color:var(--blue-dark);margin-bottom:14px">What We Do</h2>
+        <ul style="color:var(--text2);font-size:14px;line-height:2.1;list-style:none;padding:0;font-weight:300">
+          <li style="display:flex;gap:10px"><span style="color:var(--blue);font-weight:700">&rarr;</span> Publish student-authored research and educational articles</li>
+          <li style="display:flex;gap:10px"><span style="color:var(--blue);font-weight:700">&rarr;</span> Recognize academic excellence in STEM among high school students</li>
+          <li style="display:flex;gap:10px"><span style="color:var(--blue);font-weight:700">&rarr;</span> Award volunteer hours for meaningful scientific contributions</li>
+          <li style="display:flex;gap:10px"><span style="color:var(--blue);font-weight:700">&rarr;</span> Host community events to connect and inspire STEM enthusiasts</li>
+          <li style="display:flex;gap:10px"><span style="color:var(--blue);font-weight:700">&rarr;</span> Mentor aspiring scientists and provide research guidance</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 style="font-family:var(--display);font-size:24px;font-weight:700;color:var(--blue-dark);margin-bottom:20px">The Four Pillars of Our Work</h2>
+    <div class="grid2m" style="margin-bottom:28px">
+      <div class="mc"><div class="mc-num">I.</div><h3>Expanding the Curriculum</h3><p>Traditional school curricula fall short of what serious STEM engagement demands. Nezora fills this void with deeper materials, research resources, and advanced content that helps students go further.</p></div>
+      <div class="mc"><div class="mc-num">II.</div><h3>Closing the Representation Gap</h3><p>Women and minorities remain systematically underrepresented in STEM. We tackle this through advocacy, tailored outreach programs, and support systems designed to amplify underrepresented voices.</p></div>
+      <div class="mc"><div class="mc-num">III.</div><h3>Building Scientific Community</h3><p>Science is rarely done alone. We bring STEM enthusiasts together across schools and disciplines to collaborate, share ideas, and build the community that accelerates discovery.</p></div>
+      <div class="mc"><div class="mc-num">IV.</div><h3>Inspiring Future Generations</h3><p>The scientists of tomorrow are in classrooms today. Through mentorship, hands-on learning, and showcasing real student research, we plant the seeds of curiosity that grow into STEM careers.</p></div>
+    </div>
+
+    <div class="info-panel" style="text-align:center">
+      <h3 style="font-size:20px;margin-bottom:10px">Join the Research Team</h3>
+      <p style="color:var(--text2);font-size:15px;max-width:480px;margin:0 auto 24px;line-height:1.85;font-weight:300">We are always looking for passionate student writers, researchers, editors, and STEM advocates. Whether you want to publish your first article or join our editorial team, there is a place for you at Nezora.</p>
+      <button class="btn btn-p" onclick="go('contact')">Apply to Join &rarr;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ ARTICLES LIST ═══════════════ -->
+<div id="pg-articles" class="pg">
+  <div class="section">
+    <div class="sec-rule"><span class="sec-label">Nezora Publications</span></div>
+    <h1 style="font-family:var(--display);font-size:clamp(26px,3.5vw,42px);font-weight:700;color:var(--blue-dark);margin-bottom:10px">Student Research &amp; <em style="font-style:italic;color:var(--blue)">Articles</em></h1>
+    <p class="sec-sub">A virtual library of student-led research and educational content. Browse our growing collection of publications.</p>
+    <div class="grid2">
+      <div class="card" onclick="art('jealousy')">
+        <div class="card-img"><img src="jealousy.png" alt="Nature's Effect on Jealousy"></div>
+        <div class="card-body">
+          <div class="cat-badge">Psychology</div>
+          <h3>Effect of Exposure to Nature on Feelings of Jealousy</h3>
+          <p>A research investigation into whether daily nature exposure reduces the intensity and frequency of jealousy and envy.</p>
+          <div class="card-foot"><div class="card-author">By <strong>Alexa N. Edwards</strong></div><div class="read-link">Read &rarr;</div></div>
+        </div>
+      </div>
+      <div class="card" onclick="art('sleep')">
+        <div class="card-img"><img src="sleep.png" alt="Why Should You Sleep?"></div>
+        <div class="card-body">
+          <div class="cat-badge">Neuroscience</div>
+          <h3>Why Should You Sleep?</h3>
+          <p>The essential role of sleep in brain health — memory consolidation, energy conservation, and glymphatic waste removal explained.</p>
+          <div class="card-foot"><div class="card-author">By <strong>Juliet Kozlov</strong></div><div class="read-link">Read &rarr;</div></div>
+        </div>
+      </div>
+      <div class="card" onclick="art('sigfigs')">
+        <div class="card-img"><img src="back_to_school.png" alt="Back to School Science Tips"></div>
+        <div class="card-body">
+          <div class="cat-badge">Chemistry</div>
+          <h3>Back to School Science Knick-Knacks</h3>
+          <p>A practical guide to significant figures and dimensional analysis — foundational tools for every science student.</p>
+          <div class="card-foot"><div class="card-author">By <strong>Nezora Staff</strong></div><div class="read-link">Read &rarr;</div></div>
+        </div>
+      </div>
+      <div class="card" onclick="art('research')">
+        <div class="card-img"><img src="research_process.png" alt="The Research Process"></div>
+        <div class="card-body">
+          <div class="cat-badge">Research Methods</div>
+          <h3>The Research Process</h3>
+          <p>A comprehensive ten-step guide from identifying your research question all the way through peer review and publication.</p>
+          <div class="card-foot"><div class="card-author">By <strong>Nezora Staff</strong></div><div class="read-link">Read &rarr;</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="info-panel" style="margin-top:36px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px">
+      <div>
+        <h3 style="font-size:18px;margin-bottom:7px">Submit Your Own Research</h3>
+        <p style="color:var(--text2);font-size:14px;max-width:440px;line-height:1.75;font-weight:300">Have a research paper, literature review, or educational article? Submit to Nezora and earn volunteer hours while contributing to scientific education.</p>
+      </div>
+      <button class="btn btn-p" onclick="go('contact')">Submit Your Work &rarr;</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ ARTICLE: NATURE &amp; JEALOUSY ═══════════════ -->
+<div id="pg-art-jealousy" class="pg">
+  <div class="art-page">
+    <div class="art-back" onclick="go('articles')">&larr; Back to Articles</div>
+    <div class="art-cover"><img src="jealousy.png" alt="Nature's Effect on Jealousy"></div>
+    <div class="cat-badge" style="margin-bottom:14px">Psychology</div>
+    <h1>Effect of Exposure to Nature on Feelings of Jealousy</h1>
+    <div class="art-meta">
+      <div class="author-chip"><div class="av">AE</div>Alexa N. Edwards</div>
+      <div class="cat-badge" style="margin:0">Research Article</div>
+    </div>
+    <div class="divider"></div>
+    <div class="art-body">
+
+      <h2>Introduction</h2>
+      <p>Urbanization has distanced most people from nature over centuries. While nature is traditionally seen as restorative, modern life — particularly the standard 9-to-5 work schedule often extending beyond — prioritizes financial survival over mental health. Jealousy, though normal in moderation, can intensify with declining mental wellbeing and warrants investigation into remedies.</p>
+
+      <h2>Hypothesis</h2>
+      <p>Increased nature exposure reduces jealousy. The hypothesis posits that nature's soothing effects diminish the distress underlying envious feelings.</p>
+
+      <h2>Rationale for Hypothesis</h2>
+      <p>Jealousy receives less social validation than other negative emotions like sadness or anger. This stigma creates a knowledge gap regarding effective interventions, making an accessible solution valuable for millions.</p>
+
+      <h2>Operational Definitions</h2>
+      <p><strong>Jealousy:</strong> "a frustrated or bitter desire for something which another person, or other people, have" — including qualities, possessions, status, or relationships, accompanied by inferiority feelings.</p>
+      <p><strong>Nature:</strong> Undeveloped ecosystems with living plants and animals, absent asphalt trails and noise pollution.</p>
+      <p><strong>Loneliness:</strong> Isolation from community through rejection or emotional distance.</p>
+      <p><strong>Mental health:</strong> Emotional wellbeing encompassing happiness, belonging, and self-esteem.</p>
+      <p><strong>Excessively bad mental health:</strong> Persistent anger, isolation, anxiety, depression, or jealousy lasting three or more weeks, inhibiting daily functioning.</p>
+
+      <h2>Literature Review</h2>
+      <p>Research from the University of Alabama found "a significant and positive first-order relation between vulnerability to jealousy and loneliness" among children, suggesting reducing loneliness decreases envy susceptibility.</p>
+      <p>University of Washington researchers documented associations "between nature contact and pro-social outcomes," which enhance social functioning and reduce isolation.</p>
+      <p>A <em>Journal of Social Psychology</em> study revealed participants viewing nature after recalling social exclusion showed "significantly higher levels of affect balance...and significantly lower levels of social pain."</p>
+      <p>Philippine research indicated nature connectedness mediates the relationship between environmental connection and mental wellbeing, enabling people to "discover their place in the vast scheme of things."</p>
+      <p>The National Resource Centre for Value Education found nature-rich areas provide "a feeling of 'being away' and a pleasant distraction that diminishes absorption in...fantasies and anxieties about the future."</p>
+      <p>Research by Jiang and Wang confirmed "the contemporary correlation between envy and depression was significant," establishing envy as an early mental health warning indicator.</p>
+
+      <h2>Research Design</h2>
+      <p>The study involves 1,000 randomly selected participants aged 21&ndash;45 from suburban and urban U.S. areas, with balanced gender distribution and diverse racial, ethnic, and socioeconomic representation.</p>
+      <p><strong>Group 1</strong> (control): maintains current lifestyle.<br>
+      <strong>Group 2</strong> (experimental): spends 30&ndash;45 minutes daily in nearby nature reserves or regional parks.</p>
+      <p>Weekly assessments over three months use the Benign and Malicious Envy Scale (BeMaS) to measure jealousy. A correlation coefficient exceeding 0.30 would indicate a significant negative correlation between nature exposure and jealousy scores.</p>
+
+      <div class="hl">
+        <h4>Study Design Summary</h4>
+        <p><strong>Participants:</strong> 1,000 individuals (ages 21&ndash;45, suburban &amp; urban U.S.)<br>
+        <strong>Duration:</strong> 3 months with weekly assessments<br>
+        <strong>Measurement:</strong> Benign and Malicious Envy Scale (BeMaS)<br>
+        <strong>Intervention:</strong> 30&ndash;45 minutes of daily nature exposure<br>
+        <strong>Success threshold:</strong> Correlation coefficient &gt; 0.30</p>
+      </div>
+
+    </div>
+
+    <div class="works-cited">
+      <h2>Works Cited</h2>
+      <ul class="cite-list">
+        <li>Parker J., Nielsen B., McDonald K. (2016). Sources and Implications of Maternal Accuracy About Young Adolescents' Vulnerability to Friendship Jealousy. <em>Journal of Research on Adolescence</em>, 26(3), 364&ndash;379.</li>
+        <li>Frumkin H., et al. (2017). Nature contact and human health: A research agenda. <em>Environmental Health Perspectives</em>, 125(7).</li>
+        <li>Yang, Y., et al. (2020). Viewing nature scenes results in social ostracism. <em>The Journal of Social Psychology</em>, 161(2), 197&ndash;215.</li>
+        <li>Jiang X., Wang J. (2020). The casual relationship between envy and depression: A cross-lagged regression analysis. <em>Social Behavior and Personality</em>, 48(12), 1&ndash;9.</li>
+        <li>Aruta J. (2021). The quest to mental well-being: Nature connectedness, materialism and the mediating role of meaning in life in the Philippine context. <em>Current Psychology</em>, 1059&ndash;1069.</li>
+        <li>Sahni P., Kumar J. (2021). Exploring the relationship of human-nature interaction and mindfulness: a cross-sectional study. <em>Mental Health, Religion, and Culture</em>, 24(5), 450&ndash;462.</li>
+        <li>The Dispositional Benign and Malicious Envy Scale (BeMaS). (n.d.). <a href="https://bemas-envy-scale.github.io/" target="_blank">https://bemas-envy-scale.github.io/</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ ARTICLE: SLEEP ═══════════════ -->
+<div id="pg-art-sleep" class="pg">
+  <div class="art-page">
+    <div class="art-back" onclick="go('articles')">&larr; Back to Articles</div>
+    <div class="art-cover"><img src="sleep.png" alt="Why Should You Sleep?"></div>
+    <div class="cat-badge" style="margin-bottom:14px">Neuroscience</div>
+    <h1>Why Should You Sleep?</h1>
+    <div class="art-meta">
+      <div class="author-chip"><div class="av">JK</div>Juliet Kozlov</div>
+      <div class="cat-badge" style="margin:0">Design &amp; Research</div>
+    </div>
+    <div class="divider"></div>
+    <div class="art-body">
+
+      <h2>The Importance of Sleeping</h2>
+      <p>Sleep ranks among life's essentials, comparable to food and water. Humans spend approximately one-third of their existence sleeping, making it a major component of daily routines (National Institute of Neurological Disorders, 2023). During sleep, the body resets and regulates vital functions. The brain remains highly active — "trillions of neurons firing action potentials to relay newly absorbed information" (DiGiulio, 2017) — demonstrating constant electrical activity changes. Multiple biological reasons explain why humans sleep, with the core purpose being maintaining bodily health and function.</p>
+
+      <p>During sleep, brains undergo processes vital for wellbeing and maintenance. Sleep enables brain repair, information storage, waste clearance, and release of essential hormones and proteins (Nunez, 2023).</p>
+
+      <p>Sleep strengthens memory by converting short-term memories into long-term ones within the hippocampus. Neurons reorganize and communicate while processing new information (Nunez, 2023). Memory properties undergo quantitative and qualitative changes during sleep (Diekelmann, 2010). Research suggests "it may be impossible for humans or any other animal to bring a memory to mind without altering it" (Miller, 2010). Sleep also removes irrelevant information, preventing nervous system clutter (Nunez, 2023).</p>
+
+      <p>Sleep conserves energy — a crucial bodily function. Though the brain represents only 2% of body weight, it consumes nearly 20% of total energy when active (Basheer, 2010). However, brain energy demands decrease substantially during sleep: "reduced by 44% in the cerebral metabolic rate of glucose and 25% in the CMR of O2" (Basheer, 2010). Energy conservation theory suggests the body reduces brain energy during rest, restoring capacity and prioritizing resources for other functions (Brinkman, 2023).</p>
+
+      <p>Sleep also clears waste and resets brain function. When neurons consume energy, they produce excess proteins that float around and impair function. Toxic protein accumulation can cause serious harm; "clumping such as with the amyloid beta protein have been traced to diseases such as Alzheimers" (Andreone, 2018). The glymphatic system removes these toxins, primarily during deep sleep (Andreone, 2018). Fresh fluid mixes with waste-filled fluid, which is then removed into the bloodstream (Komaroff, 2021).</p>
+
+      <div class="hl">
+        <h4>Key Functions of Sleep</h4>
+        <p><strong>Memory Consolidation:</strong> Converts short-term to long-term memory in the hippocampus<br>
+        <strong>Energy Conservation:</strong> Reduces glucose metabolism by 44%, oxygen consumption by 25%<br>
+        <strong>Waste Clearance:</strong> Glymphatic system flushes toxic proteins linked to Alzheimer's disease</p>
+      </div>
+
+    </div>
+
+    <div class="works-cited">
+      <h2>Works Cited</h2>
+      <ul class="cite-list">
+        <li>Andreone, Benjamin. "Clearing Out the Junk: Healthy lifestyle choices boost brain waste disposal." <em>SITN, Harvard Medical School</em>, 21 Aug. 2018, sitn.hms.harvard.edu.</li>
+        <li>Basheer, Radhika. "Sleep and Brain Energy Levels: ATP Changes during Sleep." <em>PubMed Central</em>, 30 June 2010, ncbi.nlm.nih.gov/pmc/articles/PMC2917728/.</li>
+        <li>Diekelmann, Susanne, and Jan Born. "The memory function of sleep." <em>PubMed</em>, 4 Jan. 2010, pubmed.ncbi.nlm.nih.gov/20046194/.</li>
+        <li>DiGiulio, Sarah. "What Happens in Your Body and Brain While You Sleep." <em>NBC News</em>, 9 Oct. 2017, nbcnews.com/better/health/what-happens-your-body-brain-while-you-sleep-ncna805276.</li>
+        <li>Komaroff, Anthony L. "Are toxins flushed out of the brain during sleep?" <em>Harvard Health Publishing</em>, 1 July 2021, health.harvard.edu/mind-and-mood/are-toxins-flushed-out-of-the-brain-during-sleep.</li>
+        <li>Miller, Greg. "How Our Brains Make Memories." <em>Smithsonian Magazine</em>, May 2010, smithsonianmag.com/science-nature/how-our-brains-make-memories-14466850/.</li>
+        <li>National Institute of Neurological Disorders and Stroke. "Brain Basics: Understanding Sleep." 17 Mar. 2023, ninds.nih.gov/health-information/public-education/brain-basics/brain-basics-understanding-sleep.</li>
+        <li>Nunez, Kirsten, and Karen Lamoreux. "What Is the Purpose of Sleep?" <em>Healthline</em>, 20 June 2023, healthline.com/health/why-do-we-sleep.</li>
+        <li>Poe, Gina R. "Sleep Is for Forgetting." <em>JNeurosci</em>, 18 Jan. 2017, jneurosci.org/content/37/3/464.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ ARTICLE: SIG FIGS ═══════════════ -->
+<div id="pg-art-sigfigs" class="pg">
+  <div class="art-page">
+    <div class="art-back" onclick="go('articles')">&larr; Back to Articles</div>
+    <div class="art-cover"><img src="back_to_school.png" alt="Back to School Science Tips"></div>
+    <div class="cat-badge" style="margin-bottom:14px">Chemistry</div>
+    <h1>Back to School Science Knick-Knacks</h1>
+    <div class="art-meta">
+      <div class="author-chip"><div class="av">NZ</div>Nezora Staff</div>
+      <div class="cat-badge" style="margin:0">Educational Guide</div>
+    </div>
+    <div class="divider"></div>
+    <div class="art-body">
+
+      <p>Learn crucial information to prepare yourself for all of your science classes this year! This guide covers two foundational concepts every science student needs to master.</p>
+
+      <h2>Significant Figures</h2>
+      <p>Significant figures are the digits in a number that contribute to its precision. This concept is fundamental in scientific work because it communicates the accuracy of measured values.</p>
+
+      <h3>Rules for Identifying Significant Figures</h3>
+      <ol>
+        <li><strong>Non-zero digits:</strong> All non-zero digits are always significant. (e.g., 123.45 has five significant figures)</li>
+        <li><strong>Leading zeros:</strong> Zeros that precede all non-zero digits are not significant. (e.g., 0.00456 has three significant figures)</li>
+        <li><strong>Captive zeros:</strong> Zeros between non-zero digits are always significant. (e.g., 1002 has four significant figures)</li>
+        <li><strong>Trailing zeros in decimals:</strong> These zeros are significant because they indicate the precision of the measurement. (e.g., 45.600 has five significant figures)</li>
+        <li><strong>Trailing zeros without decimals:</strong> These are usually not considered significant unless specified by a bar, underline, or scientific notation.</li>
+      </ol>
+
+      <h3>Calculation Rules</h3>
+      <ul>
+        <li><strong>Addition / Subtraction:</strong> The result should match the least number of decimal places among the numbers used.</li>
+        <li><strong>Multiplication / Division:</strong> The result should match the fewest number of significant figures among the numbers used.</li>
+      </ul>
+
+      <div class="hl">
+        <h4>Practice Problems</h4>
+        <p>How many significant figures are in each of the following?<br>
+        a)&nbsp;0.00340 &nbsp;&nbsp; b)&nbsp;1.0050 &nbsp;&nbsp; c)&nbsp;250,000 &nbsp;&nbsp; d)&nbsp;3.200 &times; 10&sup4;</p>
+      </div>
+
+      <h2>Dimensional Analysis</h2>
+      <p>Dimensional analysis is a method used in science and engineering to analyze relationships between different physical quantities by identifying their fundamental dimensions. It is primarily used for unit conversion between different measurements of the same quantity.</p>
+
+      <h3>Common Formulas</h3>
+      <ul>
+        <li>Thickness = volume / area</li>
+        <li>Density = mass / volume</li>
+        <li>Molarity = moles of solute / liters of solution</li>
+        <li>M&#8321;V&#8321; = M&#8322;V&#8322;</li>
+      </ul>
+
+      <h3>Five Applications of Dimensional Analysis</h3>
+      <ol>
+        <li>Checking equation validity</li>
+        <li>Unit conversion</li>
+        <li>Scaling laws</li>
+        <li>Deriving formulas</li>
+        <li>Predicting results</li>
+      </ol>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ ARTICLE: RESEARCH PROCESS ═══════════════ -->
+<div id="pg-art-research" class="pg">
+  <div class="art-page">
+    <div class="art-back" onclick="go('articles')">&larr; Back to Articles</div>
+    <div class="art-cover"><img src="research_process.png" alt="The Research Process"></div>
+    <div class="cat-badge" style="margin-bottom:14px">Research Methods</div>
+    <h1>The Research Process</h1>
+    <div class="art-meta">
+      <div class="author-chip"><div class="av">NZ</div>Nezora Staff</div>
+      <div class="cat-badge" style="margin:0">Educational Guide</div>
+    </div>
+    <div class="divider"></div>
+    <div class="art-body">
+
+      <p>Want to learn how to create your own research study but aren't sure how, or are simply curious about how scientists conduct their investigations? This page outlines the complete research investigation process.</p>
+
+      <h2>1. Identify the Research Question or Problem</h2>
+      <p>The process begins with identifying "a clear and focused question or hypothesis, which serves as the foundation of your study." This involves observing a problem or knowledge gap and conducting preliminary literature review to confirm relevance and originality. The question must be refined to be specific and manageable.</p>
+      <p><strong>Objective:</strong> Define a clear and focused question or hypothesis.</p>
+
+      <h2>2. Literature Review</h2>
+      <p>"A thorough literature review is conducted to explore existing research, theories, and methodologies related to the topic." This involves analyzing scholarly sources and databases to summarize key findings and identify gaps that build a conceptual framework.</p>
+      <p><strong>Objective:</strong> Explore existing research, theories, and methodologies related to your topic.</p>
+
+      <h2>3. Formulate a Hypothesis or Objective</h2>
+      <p>The hypothesis or research objective is formulated after the literature review. It should be "a specific, measurable, and falsifiable prediction based on the literature, or a clear research goal if conducting exploratory studies."</p>
+      <p><strong>Objective:</strong> Develop a testable prediction or a clear research goal.</p>
+
+      <h2>4. Design the Research Study</h2>
+      <p>"The research study is then designed by deciding on a methodology (e.g., experimental, observational, qualitative, or quantitative)" and defining materials, variables, sample population, and procedures needed.</p>
+      <p><strong>Objective:</strong> Create a plan for how you'll gather and analyze data.</p>
+
+      <h2>5. Data Collection</h2>
+      <p>"Data collection follows, where the researcher gathers evidence according to the study design, ensuring consistency and minimizing bias." Precise records of all procedures must be maintained.</p>
+      <p><strong>Objective:</strong> Gather the necessary data to address your hypothesis or objective.</p>
+
+      <h2>6. Data Analysis</h2>
+      <p>"Once data is collected, it is analyzed using appropriate statistical tests or methods." The analysis interprets whether data supports the hypothesis.</p>
+      <p><strong>Objective:</strong> Interpret the collected data to draw meaningful conclusions.</p>
+
+      <h2>7. Interpret Results and Draw Conclusions</h2>
+      <p>Results are interpreted in relation to the research question, discussing significance, comparing to existing literature, addressing limitations, and suggesting future directions.</p>
+      <p><strong>Objective:</strong> Assess what your findings mean in relation to your research question.</p>
+
+      <h2>8. Report and Communicate Findings</h2>
+      <p>"Findings are then communicated through a research paper or report, which includes an abstract, introduction, methods, results, and discussion."</p>
+      <p><strong>Objective:</strong> Share your findings with the broader scientific community or relevant audience.</p>
+
+      <div class="hl">
+        <h4>Standard Research Paper Structure</h4>
+        <p><strong>Abstract:</strong> A brief summary of the entire project, including the research question, methods, results, and conclusions.<br>
+        <strong>Introduction:</strong> Provides the context of the experiment, explains the research question or hypothesis, and outlines what you predict will happen.<br>
+        <strong>Methods:</strong> Describes the materials used and details how data was gathered. This section allows for replication of the study by other researchers.<br>
+        <strong>Results:</strong> Presents the findings, often using visual aids like pictures, diagrams, and charts to illustrate the data.<br>
+        <strong>Discussion:</strong> Interprets the results, connecting them back to the hypothesis or research question.</p>
+      </div>
+
+      <h2>9. Revise &amp; Refine</h2>
+      <p>Future directions should explore "considerations for translating in vitro results to in vivo applications." Revisit your paper with fresh eyes and revise for clarity, accuracy, and completeness.</p>
+
+      <h2>10. Peer Review and Revision</h2>
+      <p>"Finally, the research undergoes peer review, where experts provide feedback to refine the study, ensuring its accuracy and impact before submitting it to journals, conferences, or relevant stakeholders."</p>
+      <p><strong>Objective:</strong> Get feedback from experts to validate and refine your research.</p>
+
+      <h2>Example Research Paper Format</h2>
+      <p>The following template illustrates how to structure an original research paper.</p>
+
+      <h3>Abstract</h3>
+      <blockquote>This project investigates the effect of [specific variable] on [specific biological process or organism] with the aim of understanding its impact on [larger application, such as neurodegeneration or cell growth]. The experiment hypothesizes that altering [specific factor] will lead to measurable changes in [outcome], such as increased or decreased [biological response]. Using a controlled laboratory setting, we conducted a series of tests to analyze the relationship between [the independent variable] and [the dependent variable]. The results showed a significant correlation between [factor] and [biological outcome], suggesting [hypothesis support or refutation]. These findings could have important implications for [clinical applications, medical treatments, or technological innovations]. Future research should focus on translating these in vitro results to in vivo models to further validate the findings.</blockquote>
+
+      <h3>Introduction</h3>
+      <blockquote>In recent years, [specific field or topic] has drawn attention for its role in [medical/biological issue], such as [mention relevance to broader science]. This project focuses on [specific focus], exploring how [specific variable] influences [biological or physiological process]. The hypothesis is that by manipulating [variable], we will observe a [specific] change in [measured outcome]. For example, previous studies have shown that [related research findings], leading us to predict that [specific result] will occur. Understanding this relationship is crucial for [potential real-world applications, like treating diseases, improving therapies, or developing technology].</blockquote>
+
+      <h3>Methods</h3>
+      <blockquote>We conducted the experiment using [list of materials used, e.g., cell cultures, reagents, microscopy tools, or data acquisition software]. To gather data, [describe the procedure] was followed. [Specific biological materials] were treated with [specific experimental conditions], and observations were made using [method of observation, e.g., microscopy, imaging software, or computational tools]. Data collection was carried out over [specified time frame], and variables such as [control variables] were kept consistent to ensure reliable results. Statistical analysis was then applied to determine the significance of [specific measurements].</blockquote>
+
+      <h3>Results</h3>
+      <blockquote>The results of the experiment are presented in the following charts and diagrams, which illustrate the impact of [variable] on [biological process or outcome]. For instance, Figure 1 shows [data visualization], indicating that [brief description of trends, e.g., cell growth increased as X was introduced]. The data supported/refuted our hypothesis, with [specific finding] indicating that [significance of the result]. Visual representations, such as [graph or image], highlight the correlation between [factors] and [outcome], confirming that [brief conclusion of findings].</blockquote>
+
+      <h3>Discussion</h3>
+      <blockquote>Our findings indicate that [summary of main results], which ties directly to our original hypothesis. The data supports the idea that [original prediction], suggesting that [mechanism behind the results]. This is consistent with other research in the field, such as [referencing previous studies]. However, there are some limitations, including [potential sources of error or areas that were not accounted for]. These results have potential implications for real-world applications, such as [exploring how this can be translated into clinical treatments, technological development, or policy changes].<br><br>Future studies should aim to bridge the gap between in vitro findings and in vivo applications. Specifically, follow-up experiments could focus on [related questions, expanded areas of research, or different models]. By further exploring [specific unanswered questions], we can develop a more comprehensive understanding of [related field]. Implementing these findings could lead to practical advancements in [medicine, technology, environmental science], bringing us closer to [larger goal]. Additionally, consideration of [ethical or practical issues] will be important in future research endeavors.</blockquote>
+
+      <div style="background:var(--blue-pale);border:1px solid var(--blue-light);border-radius:3px;padding:24px;margin-top:40px;text-align:center">
+        <h3 style="font-family:var(--display);font-size:17px;color:var(--blue-dark);margin-bottom:9px">Ready to Start Your Research Journey?</h3>
+        <p style="font-family:var(--body);color:var(--text2);font-size:14px;margin-bottom:20px;font-weight:300">Submit your work to Nezora and join our growing community of student researchers.</p>
+        <button class="btn btn-p" onclick="go('contact')">Submit Your Research &rarr;</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ EVENTS ═══════════════ -->
+<div id="pg-events" class="pg">
+  <div class="section">
+    <div class="sec-rule"><span class="sec-label">Community Outreach</span></div>
+    <h1 style="font-family:var(--display);font-size:clamp(26px,3.5vw,42px);font-weight:700;color:var(--blue-dark);margin-bottom:10px">Nezora <em style="font-style:italic;color:var(--blue)">Events</em></h1>
+    <p class="sec-sub">Connecting with communities through hands-on science demonstrations, engineering challenges, and STEM outreach.</p>
+
+    <div class="events-gallery">
+      <div class="event-card">
+        <div class="event-card-img">
+          <img src="volunteer/unnamed.jpg" alt="Nezora chemistry outreach event">
+        </div>
+        <div class="event-card-body">
+          <div class="event-tag">Past Event</div>
+          <h3>Introduction to Chemistry &amp; Engineering Principles</h3>
+          <p>Participants engaged in hands-on science demonstrations including an invisible ink experiment using basic oxidation chemistry, and structural engineering challenges — building bridges and houses from marshmallows and toothpicks. Activities were presented bilingually to reach a broader community audience.</p>
+        </div>
+      </div>
+      <div class="event-card">
+        <div class="event-card-img">
+          <img src="volunteer/unnamed%20(1).jpg" alt="Nezora holiday science outreach event">
+        </div>
+        <div class="event-card-body">
+          <div class="event-tag">Past Event</div>
+          <h3>Holiday Chemical Experiments &amp; Engineering Projects</h3>
+          <p>A festive science outreach event featuring acid-base demonstrations using baking soda, buoyancy explorations with the "Dancing Jingle Bells" experiment, and creative engineering projects including marshmallow igloo construction and pipe cleaner snowflakes. Young participants explored real chemistry and engineering in a seasonal setting.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-panel" style="margin-top:36px;text-align:center">
+      <h3 style="font-size:20px;margin-bottom:10px">More Events Coming Soon</h3>
+      <p style="color:var(--text2);font-size:15px;max-width:400px;margin:0 auto 24px;line-height:1.85;font-weight:300">We are planning our next round of workshops, seminars, and community events. Subscribe below to be the first to know.</p>
+      <form style="display:flex;gap:8px;max-width:340px;margin:0 auto" onsubmit="return false">
+        <input type="email" class="fc" placeholder="your@email.com" style="flex:1">
+        <button type="submit" class="btn btn-p">Notify Me</button>
+      </form>
+    </div>
+
+    <div style="margin-top:40px">
+      <h2 style="font-family:var(--display);font-size:22px;font-weight:700;color:var(--blue-dark);margin-bottom:20px">What to Expect at Nezora Events</h2>
+      <div class="grid2m">
+        <div class="mc"><div class="mc-num">I.</div><h3>Research Workshops</h3><p>Hands-on sessions covering research methodology, data analysis, and scientific writing led by experienced student researchers.</p></div>
+        <div class="mc"><div class="mc-num">II.</div><h3>STEM Seminars</h3><p>Speaker events featuring scientists, researchers, and STEM professionals sharing their expertise and career journeys.</p></div>
+        <div class="mc"><div class="mc-num">III.</div><h3>Community Outreach</h3><p>Events designed to bring accessible science to underserved communities and inspire young students to pursue STEM.</p></div>
+        <div class="mc"><div class="mc-num">IV.</div><h3>Get Involved</h3><p>Interested in volunteering at a Nezora event? Reach out to us at <a href="mailto:nezora.assist@gmail.com" style="color:var(--blue)">nezora.assist@gmail.com</a>.</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ CONTACT ═══════════════ -->
+<div id="pg-contact" class="pg">
+  <div class="section">
+    <div class="sec-rule"><span class="sec-label">Get In Touch</span></div>
+    <h1 style="font-family:var(--display);font-size:clamp(26px,3.5vw,42px);font-weight:700;color:var(--blue-dark);margin-bottom:10px">Contact <em style="font-style:italic;color:var(--blue)">Nezora</em></h1>
+    <p class="sec-sub">Whether you want to submit research, join the team, or just say hello — we would love to hear from you.</p>
+    <div class="contact-grid">
+      <form onsubmit="return false">
+        <div class="fg"><label>Your Name</label><input type="text" class="fc" placeholder="Jane Smith"></div>
+        <div class="fg"><label>Email Address</label><input type="email" class="fc" placeholder="jane@example.com"></div>
+        <div class="fg">
+          <label>Subject</label>
+          <select class="fc" style="cursor:pointer">
+            <option value="">Select a topic&hellip;</option>
+            <option>Submit Research / Article</option>
+            <option>Join the Research Team</option>
+            <option>Volunteer Hours Inquiry</option>
+            <option>Event Information</option>
+            <option>General Inquiry</option>
+          </select>
+        </div>
+        <div class="fg"><label>Message</label><textarea class="fc" placeholder="Tell us about your research, your goals, or your question&hellip;"></textarea></div>
+        <button type="submit" class="btn btn-p" style="width:100%;justify-content:center">Send Message &rarr;</button>
+      </form>
+      <div>
+        <div class="info-panel" style="margin-bottom:18px">
+          <h3 style="font-size:17px;margin-bottom:18px">Submission Guidelines</h3>
+          <div class="info-row"><div class="info-icon">i</div><div><p style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px">Original Work Only</p><p style="font-size:12px;color:var(--text2);line-height:1.65;font-weight:300">All submissions must be original content authored by high school or early college students.</p></div></div>
+          <div class="info-row"><div class="info-icon">ii</div><div><p style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px">Editorial Review</p><p style="font-size:12px;color:var(--text2);line-height:1.65;font-weight:300">All submissions go through editorial review. We provide constructive feedback before publication.</p></div></div>
+          <div class="info-row"><div class="info-icon">iii</div><div><p style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px">Response Time</p><p style="font-size:12px;color:var(--text2);line-height:1.65;font-weight:300">Expect to hear back within 1&ndash;2 weeks of your submission.</p></div></div>
+          <div class="info-row" style="margin-bottom:0"><div class="info-icon">iv</div><div><p style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:2px">Volunteer Hours Earned</p><p style="font-size:12px;color:var(--text2);line-height:1.65;font-weight:300">Each published article earns you documented volunteer hours for your transcript.</p></div></div>
+        </div>
+        <div style="background:var(--blue-pale);border:1px solid var(--blue-light);border-radius:3px;padding:22px;text-align:center">
+          <p style="font-family:var(--body);font-size:11px;font-weight:700;color:var(--blue-dark);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px">Student-Led Nonprofit</p>
+          <p style="color:var(--text2);font-size:13px;line-height:1.8;font-weight:300">We are students helping students. Every message is read by a real person who cares about your scientific journey.</p>
+          <p style="margin-top:10px"><a href="mailto:nezora.assist@gmail.com" style="color:var(--blue);font-size:13px">nezora.assist@gmail.com</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-top">
+      <div class="ft-brand">
+        <div class="logo" style="cursor:default;color:#fff">
+          <img src="logo.png" alt="Nezora" style="width:40px;height:40px;border-radius:50%;object-fit:contain">
+          NEZORA
+        </div>
+        <p>A virtual library for student-led research and publications. Inspiring the next generation of STEM leaders.</p>
+      </div>
+      <div class="ft-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a onclick="go('home')">Home</a></li>
+          <li><a onclick="go('articles')">Articles</a></li>
+          <li><a onclick="go('events')">Events</a></li>
+          <li><a onclick="go('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Organization</h4>
+        <ul>
+          <li><a onclick="go('about')">About Nezora</a></li>
+          <li><a onclick="go('about')">Recruiting</a></li>
+          <li><a onclick="go('contact')">Submit Work</a></li>
+          <li><a onclick="go('articles')">Volunteer Hours</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Articles</h4>
+        <ul>
+          <li><a onclick="art('jealousy')">Nature &amp; Jealousy</a></li>
+          <li><a onclick="art('sleep')">Why Should You Sleep?</a></li>
+          <li><a onclick="art('sigfigs')">Science Knick-Knacks</a></li>
+          <li><a onclick="art('research')">Research Process</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <p>&copy; 2024 Nezora. Student-Led Nonprofit. All rights reserved.</p>
+      <p>nezora.assist@gmail.com</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+function go(page) {
+  document.querySelectorAll('.pg').forEach(s => s.classList.remove('active'));
+  const el = document.getElementById('pg-' + page);
+  if (el) { el.classList.add('active'); window.scrollTo(0, 0); }
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.remove('active');
+    if (a.dataset.pg === page) a.classList.add('active');
+  });
+}
+
+function art(id) {
+  go('art-' + id);
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  const al = document.querySelector('[data-pg="articles"]');
+  if (al) al.classList.add('active');
+}
+</script>
+</body>
+</html>
